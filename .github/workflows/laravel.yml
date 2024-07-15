@@ -33,3 +33,7 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test
+    - name: Execute PINT
+      run: php vendor/bin/pint
+    - name: Execute larastan
+      run: php vendor/bin/phpstan analyze
