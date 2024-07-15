@@ -1,4 +1,5 @@
 # Movie Api
+
 ## TODO
 * OMDB Client
 * Movie Table
@@ -8,6 +9,15 @@
 * MovieRatingCalculatorService
 * MovieRatingUpdateListener
 * api key in env
+
+## Laravel Packages
+* Laravel Breeze
+* Laravel Sanctum
+* Laravel Queue
+* Laravel Horizon
+* Laravel Scout
+* Laravel Telescope
+* Memcache
 
 ## DB
 * movies
@@ -39,3 +49,18 @@
 * Laravel Octane & FrankenPHP for performance
 * Varnish for cache
 * swagger for docs
+
+## Commands
+### Random
+```bash
+sail down && sail up -d
+sail composer
+sail artisan
+```
+
+### CI Pipeline
+```bash
+sail pint --test
+sail php vendor/bin/phpstan analyze
+sail pest
+```
