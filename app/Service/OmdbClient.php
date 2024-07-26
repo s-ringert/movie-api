@@ -1,12 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
 
-class OmdbClient
+final class OmdbClient
 {
-    private const API_BASE_URL = 'https://omdbapi.com';
+    public function __construct() {}
 
-    public function __construct(private readonly Client $client, private readonly string $omdbApiKey) {}
+    public function searchMovie(string $movieTitle): array
+    {
+        $response = Http::get(
+            Config::get('services.omdb.base_url'),
+            [
+                'apikey' => Config::get('services.omdb.api_key'),
+                's' => $movieTitle,
+                'type' => 'movie',
+            ]
+        );
+
+        return $response->json('Search') ?? [];
+    }
 }
