@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('year')->unsigned();
             $table->string('imdb_id')->unique();
-            $table->float('score',2)->default(0.0);
+            $table->float('score', 2)->default(0.0);
             $table->timestamps();
         });
     }

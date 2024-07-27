@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,4 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/tokens/{userId}/create', function (int $userId) {
+    $user = User::find($userId);
+    $token = $user->createToken('ApiToken')->plainTextToken;
+
+    return response()->json([
+        'token' => $token,
+    ]);
+});
 require __DIR__.'/auth.php';

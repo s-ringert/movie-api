@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DTO;
 
+use App\Models\Movie;
 use Illuminate\Database\Eloquent\Collection;
 
 final readonly class MovieDTO implements \JsonSerializable
@@ -19,6 +20,15 @@ final readonly class MovieDTO implements \JsonSerializable
         string $title, int $year, string $imdbId, float $score = 0.0
     ): self {
         return new self($title, $year, $imdbId, $score);
+    }
+
+    public static function createFromMovie(Movie $movie): self{
+        return new self(
+            $movie->getTitle(),
+            $movie->getYear(),
+            $movie->getImdbId(),
+            $movie->getScore()
+        );
     }
 
     public static function createByCollection(Collection $collection): array
