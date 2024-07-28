@@ -22,7 +22,8 @@ final readonly class MovieDTO implements \JsonSerializable
         return new self($title, $year, $imdbId, $score);
     }
 
-    public static function createFromMovie(Movie $movie): self{
+    public static function createFromMovie(Movie $movie): self
+    {
         return new self(
             $movie->getTitle(),
             $movie->getYear(),

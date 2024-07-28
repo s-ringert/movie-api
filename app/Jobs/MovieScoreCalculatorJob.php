@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Jobs;
@@ -14,9 +15,7 @@ final class MovieScoreCalculatorJob implements ShouldQueue
 
     public function __construct(
         private readonly MovieDTO $movieDTO,
-    )
-    {
-    }
+    ) {}
 
     public function handle(MovieScoreCalculatorService $movieScoreCalculator): void
     {

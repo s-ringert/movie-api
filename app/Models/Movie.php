@@ -28,18 +28,23 @@ class Movie extends Model
         return $this->belongsToMany(User::class)->withPivot('score');
     }
 
-    public function getTitle(): string{
+    public function getTitle(): string
+    {
         return $this->title;
     }
-    public function getYear(): int{
+
+    public function getYear(): int
+    {
         return $this->year;
     }
 
-    public function getImdbId(): string{
+    public function getImdbId(): string
+    {
         return $this->imdb_id;
     }
 
-    public function getScore(): int{
+    public function getScore(): int
+    {
         return $this->score;
     }
 }
